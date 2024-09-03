@@ -301,7 +301,7 @@ static NSString *const kPresentationSize         = @"presentationSize";
  */
 - (void)bufferingSomeSecond {
     // playbackBufferEmpty会反复进入，因此在bufferingOneSecond延时播放执行完之前再调用bufferingSomeSecond都忽略
-    if (self.isBuffering || self.playState == ZFPlayerPlayStatePlayStopped) return;
+    if (self.isBuffering || self.playState == ZFPlayerPlayStatePlayStopped || self.isReadyToPlay) return;
     /// 没有网络
     if ([ZFReachabilityManager sharedManager].networkReachabilityStatus == ZFReachabilityStatusNotReachable) return;
     self.isBuffering = YES;
