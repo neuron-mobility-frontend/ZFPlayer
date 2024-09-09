@@ -1330,6 +1330,11 @@ static NSMutableDictionary <NSString* ,NSNumber *> *_zfPlayRecords;
 
 
 - (void)playTheIndexPath:(NSIndexPath *)indexPath assetURL:(NSURL *)assetURL {
+    if ([self.scrollView isKindOfClass:[UITableView class]]) {
+        UITableView *tableView = (UITableView *)self.scrollView;
+        [tableView reloadData];
+    }
+    
     self.playingIndexPath = indexPath;
     self.assetURL = assetURL;
 }
